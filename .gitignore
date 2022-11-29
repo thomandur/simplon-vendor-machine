@@ -39,4 +39,4 @@ Thumbs.db
 data.csv
 exercice_coffee_machine.ipynb
 test.ipynb
-__pycache__/*
+__pycache__/
