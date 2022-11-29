@@ -7,7 +7,7 @@ from art import *
 
 def menu():
     t = input(
-        f'---------------------------\nWhat do you want ?\n 1 - Buy can $1.5 (type: 1)\n 2 - Buy peanut $1.0 (type: 2)\n 3 - Maintenance (type: 2)\n 4 - Quit the machine (type: q)\n---------------------------\n>>> '
+        f'---------------------------\nWhat do you want ?\n 1 - Buy can $1.5 (type: 1)\n 2 - Buy peanut $1.0 (type: 2)\n 3 - Maintenance (type: 3)\n 4 - Quit the machine (type: q)\n---------------------------\n>>> '
     )
     return t
 
@@ -28,8 +28,7 @@ def main():
     launch = True
     clear_term()
     while launch == True:
-        # print('Admin :', v.is_admin())
-        art_2 = text2art("MICHI-MACHINE",font='small',chr_ignore=True)
+        art_2 = text2art("VENDOR-MACHINE",font='small',chr_ignore=True)
         print(art_2)
         if v.is_admin() == True:
             t = admin_menu()
@@ -38,8 +37,8 @@ def main():
             elif t == '1':
                 print(v)
             elif t == '2':
-                amount = input('\n\nHow much cans to add ?\n\n')
-                v.add_cans(int(amount))
+                product = input('\n\nWich product : \n1 - add cans \n2 - add peanuts\n\n')
+                v.add_product(product)
             elif t == '4':
                 v.log_out()
             else:

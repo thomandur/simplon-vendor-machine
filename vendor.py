@@ -16,7 +16,7 @@ class Vendor():
         self.data = Data([self.can_count, self.can_price, self.peanut_count, self.peanut_price, self.change])
 
     def __str__(self):
-        return f'{self.can_count} cans, {self.change}$ change, 1 can = {self.can_price}$'
+        return f'---------------------------------------------\n\n\n{self.can_count} cans, Can = {self.can_price}$ \n{self.peanut_count} cans, Peanuts = {self.peanut_price}$ \n{self.change}$ change\n\n\n---------------------------------------------'
 
     def post(self):
         self.data.post([self.can_count, self.can_price, self.peanut_count, self.peanut_price, self.change])
@@ -44,8 +44,22 @@ class Vendor():
 
         return product['count']
 
+    def add_product(self, product):
+        if product == '1':
+            amount = input('How many cans ?\n')
+            self.add_cans(int(amount))
+        elif product == '2':
+            amount = input('How many peanuts ?\n')
+            self.add_cans(int(amount))
+        else:
+            print('ERROR : product does not exist')
+
     def add_cans(self, amount):
         self.can_count += amount
+        self.post()
+
+    def add_peanuts(self, amount):
+        self.peanut_count += amount
         self.post()
 
     def auth(self):
@@ -57,7 +71,6 @@ class Vendor():
                 print('Wrong password')
         else:
             return True
-        # else retourner au menu
         return self.admin
 
     def log_out(self):
